@@ -26,3 +26,8 @@ typst watch file.typ
 ```
 ## Tips for generating a bibliography
 Use the free tool Zotero during your literature review to collect and organize your sources. Once your library is ready, you can export it in BibLaTeX format (.bib), which can be easily included in your Typst file.
+
+## Example
+
+![cover](/ressources/cover.png)
+![thesis_content](/ressources/thesis_content.png)
