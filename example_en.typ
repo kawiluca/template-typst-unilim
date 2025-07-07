@@ -53,6 +53,27 @@
 == subtitle
 #lorem(30)
 == subtitle
+
+
+*HQC*
+
+Encryption:
+$bold(c) = bold(m) * bold(G) + bold(e)$
+
+Syndrome:
+$bold(s) = bold(c) * bold(H)^T$
+
+Hamming weight of a error vector:
+$"wt"_H(bold(e)) = w$
+
+Quasi-cyclic structure (rotation) :
+$bold(m) * bold(G) = sum_{i=0}^{n-1} m_i * "rot"_i(bold(g))$
+
+Fundamental problem (syndrome decoding) :
+$bold(H) * bold(e)^T = bold(s)$
+
+Decryption: $hat(bold(m)) = bold(c) - hat(bold(e)) * bold(G)$
+
 == subtitle
 article @guillon_introduction_2002
 
