@@ -1,5 +1,3 @@
-#import "@preview/fontawesome:0.5.0"
-
 #let title(
   niveau_formation: highlight("Niveau du Diplome"),
   nom_formation: highlight("Nom de la formation"),

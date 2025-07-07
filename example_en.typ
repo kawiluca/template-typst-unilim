@@ -75,7 +75,7 @@ $bold(H) * bold(e)^T = bold(s)$
 Decryption: $hat(bold(m)) = bold(c) - hat(bold(e)) * bold(G)$
 
 == subtitle
-article @guillon_introduction_2002
+article @aragon_hamming_nodate
 
 = chapter 3: 
 == subtitle
@@ -94,8 +94,11 @@ article @guillon_introduction_2002
 #title("Conclusion")
 
 
-
-#title("Bibliography")
-#bibliography("example.bib", title: "")
+#pagebreak()
+#bibliography("example.bib",
+  title: [
+    Bibliography 
+    ],
+  )
 
 #title("Appendix")

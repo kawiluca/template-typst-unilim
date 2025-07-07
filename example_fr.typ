@@ -75,7 +75,7 @@ Decryption: $hat(bold(m)) = bold(c) - hat(bold(e)) * bold(G)$
 #lorem(30)
 == Sous titre de la partie 2
 == Sous titre de la partie 2
-Papier de guillon @guillon_introduction_2002
+Papier de guillon @aragon_hamming_nodate
 
 = Partie 3: Titre de la partie 3
 == Sous titre de la partie 3
@@ -96,7 +96,11 @@ Papier de guillon @guillon_introduction_2002
 
 
 
-#titre("Références Bibliographiques")
-#bibliography("example.bib", title: "")
+#pagebreak()
+#bibliography("example.bib",
+  title: [
+    Références Bibliographiques 
+    ],
+  )
 
 #titre("Annexes")

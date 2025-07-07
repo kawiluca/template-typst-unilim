@@ -1,5 +1,3 @@
-#import "@preview/fontawesome:0.5.0"
-
 #let cover(
   degree: highlight("Degree"),
   name_degree: highlight("Name Degree"),
