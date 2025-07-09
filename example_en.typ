@@ -38,7 +38,8 @@
 )
 
 #acknowledgements()
-#lorem(450)
+#include "my-include-section.typ"
+
 
 #tableContents()
 
@@ -62,7 +63,17 @@
 == subtitle 
 #lorem(30)
 == subtitle 
+#pseudocode(
+  ```c
+  #Define MAX_SIZE 45
 
+  int i = 0;
+
+  for (i=0; i<MAX_SIZE; i++)
+    printf("Hello, world!");
+  ```,
+  size: 50% //optional
+)
 = chapter 2: 
 == subtitle
 #lorem(30)

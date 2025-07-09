@@ -38,10 +38,9 @@
 )
 
 #remerciements()
-#lorem(450)
+#include "my-include-section.typ"
 
 #tableMatieres()
-
 #tableIllustrations()
 #tableTableau()
 
@@ -62,6 +61,18 @@
 == Sous titre de la partie 1
 #lorem(30)
 == Sous titre de la partie 1
+
+#pseudocode(
+  ```c
+  #Define MAX_SIZE 45
+
+  int i = 0;
+
+  for (i=0; i<MAX_SIZE; i++)
+    printf("Bonjour le monde");
+  ```,
+  size: 50% //optional
+)
 
 = Partie 2: Titre de la partie 2
 

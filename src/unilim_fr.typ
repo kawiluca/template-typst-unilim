@@ -232,3 +232,23 @@ block(
   [= #my_titre]
   line(length: 100%)
 }
+
+#let pseudocode(
+  content,
+  caption: highlight("Légende manquante"),
+  size: 80%
+  ) = {
+set par(justify: false)
+figure(
+  block(
+    fill: luma(250), 
+    radius: 3pt,
+    stroke: .6pt + luma(200),
+    inset:	(x: .45em, y: .65em),
+    width: size,
+    clip: false,
+  [#align(left)[#content]]),
+  caption: [#caption],
+  supplement: "Code",
+  kind: "code",
+)}

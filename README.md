@@ -27,7 +27,23 @@ typst watch file.typ
 ## Tips for generating a bibliography
 Use the free tool Zotero during your literature review to collect and organize your sources. Once your library is ready, you can export it in BibLaTeX format (.bib), which can be easily included in your Typst file.
 
-## Example
+## Examples
 
-![cover](/ressources/cover.png)
-![thesis_content](/ressources/thesis_content.png)
+See [french version](./preview/preview_fr.pdf)
+
+See [english version](./preview/preview_en.pdf)
+
+## Contents
+
+This template contains:
+
+- Two versions: french and english
+- Cover (+ footer) of the University of Limoges
+- Standard document structure (cover, epigraphy, Acknowledgements, tables, body, conclusion, bibliography, appendix)
+- Title in University of Limoges format
+- Example to include .typ file (to divide document in several files)
+- Example to insert image
+- Example to insert table
+- Example to insert pseudocode
+- Example to insert math formula
+- Example to insert source in bibliography
