@@ -14,8 +14,22 @@
   // date: "",
   // thesis_title: "",
   // organization: "",
-  // Supervisors:"",
-  // fac_supervisor: "",
+  // supervisor:(
+  //   (
+  //     "name": "Ms. First SUPERVISOR",
+  //     "function": "Department manager",
+  //   ), // <==== DON'T FORGET THIS COMMA, IT'S IMPORTANT AND REQUIRED
+  //  (
+  //     "name": "Ms. Second SUPERVISOR",
+  //     "function": "Department manager",
+  //   ),
+  // ),
+  // fac_supervisor: (
+  //   (
+  //     "name": "Pr. Last SUPERVISOR",
+  //     "function": "Associate Professor, XLIM CNRS",
+  //   ), // <==== DON'T FORGET THIS COMMA, IT'S IMPORTANT AND REQUIRED
+  //   ),
 )
 
 #epigraphy(
@@ -55,7 +69,7 @@
 == subtitle
 
 
-*HQC*
+*HQC*@aragon_hamming_nodate
 
 Encryption:
 $bold(c) = bold(m) * bold(G) + bold(e)$
@@ -75,7 +89,6 @@ $bold(H) * bold(e)^T = bold(s)$
 Decryption: $hat(bold(m)) = bold(c) - hat(bold(e)) * bold(G)$
 
 == subtitle
-article @aragon_hamming_nodate
 
 = chapter 3: 
 == subtitle

@@ -6,8 +6,26 @@
   date_soutenance: highlight("Date de soutenance"),
   titre_manuscrit : highlight("Titre du manuscrit"),
   lieu :  highlight("Lieu de stage ou d'accueil"),
-  Encadrant : highlight("Prénom NOM, Fonction"),
-  Encadrant_academique :  highlight("Prénom NOM, Fonction"),
+  encadrant : (
+    (
+      nom: highlight("Mme Premier ENCADRANT"),
+      fonction: highlight("Responsable du service"),
+    ), 
+    (
+      nom: highlight("M. Second ENCADRANT"),
+      fonction: highlight("Ingenieur de recherche"),
+    ), 
+  ),
+  academique :  (
+    (
+      nom: highlight("Pr. Pénultième ENCADRANT"),
+      fonction: highlight("Professeur des Universités, XLIM, CNRS"),
+    ), 
+    (
+      nom: highlight("Pr. Dernier ENCADRANT"),
+      fonction: highlight("Maître de Conférences, XLIM, CNRS"),
+    ), 
+  ),
   body
   ) = {
 
@@ -89,20 +107,50 @@ block(
   )[*Etablissement d'accueil* #linebreak()
   #lieu]
   v(15pt)
-  text(
+  if(encadrant.len() < 2) {
+    text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[*Encadrants * #linebreak()
-  #Encadrant
+  )[*Encadrant*#linebreak()]
+  }else{
+    text(
+    font: "Arial",
+    fill: rgb("#4B575F"),
+    size: 12pt,
+  )[*Encadrants*#linebreak()] 
+  }
+  [
+    #for perso in encadrant {
+      text(
+        font: "Arial",
+        fill: rgb("#4B575F"),
+        size: 12pt,
+      )[#perso.at("nom"), #perso.at("fonction")#linebreak()]
+    }
   ]
   v(15pt)
-  text(
+  if(academique.len() < 2) {
+    text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[*Encadrant Académique* #linebreak()
-    #Encadrant_academique
+  )[*Encadrant Académique*#linebreak()]
+  }else{
+    text(
+    font: "Arial",
+    fill: rgb("#4B575F"),
+    size: 12pt,
+  )[*Encadrants Académique*#linebreak()] 
+  }
+  [
+    #for pers in academique {
+      text(
+        font: "Arial",
+        fill: rgb("#4B575F"),
+        size: 12pt,
+      )[#pers.at("nom"), #pers.at("fonction")#linebreak()]
+    }
   ]
   align(right,
   image("../ressources/footer_cover.png", width: 20%)

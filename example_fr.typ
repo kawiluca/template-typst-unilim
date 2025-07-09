@@ -14,8 +14,22 @@
   // date_soutenance: "",
   // titre_manuscrit: "mon titre",
   // lieu: "Le lieu du stage",
-  // Encadrant:"Le ou les encadrants du stage",
-  // Encadrant_academique: "",
+  // encadrant:(
+  //   (
+  //     "nom": "Mme First ENCADRANTE",
+  //     "fonction": "Responsable du service "
+  //   ), // <==== NE PAS OUBLIER CETTE VIRGULE, C'EST IMPORTANT ET REQUIS
+  //   (
+  //     "nom": "M. Second SUPERVISEUR",
+  //     "fonction": "Ingenieur de recherche"
+  //   )
+  // ),
+  // academique: (
+  //   (
+  //     "nom": "Mme Penultimate ENCADRANTE",
+  //     "fonction": "Professeur des Universités, XLIM, CNRS,"
+  //   ), // <==== NE PAS OUBLIER CETTE VIRGULE, C'EST IMPORTANT ET REQUIS
+  // ),
 )
 
 #epigraphe(
@@ -51,7 +65,7 @@
 
 = Partie 2: Titre de la partie 2
 
-*HQC*
+*HQC*@aragon_hamming_nodate
 
 Encryption:
 $bold(c) = bold(m) * bold(G) + bold(e)$
@@ -75,7 +89,6 @@ Decryption: $hat(bold(m)) = bold(c) - hat(bold(e)) * bold(G)$
 #lorem(30)
 == Sous titre de la partie 2
 == Sous titre de la partie 2
-Papier de guillon @aragon_hamming_nodate
 
 = Partie 3: Titre de la partie 3
 == Sous titre de la partie 3

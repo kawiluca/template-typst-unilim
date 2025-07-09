@@ -6,8 +6,26 @@
   date: highlight("Date"),
   thesis_title : highlight("title thesis"),
   organization :  highlight("organization"),
-  Supervisors : highlight("Firstname LASTNAME, job title"),
-  fac_supervisor :  highlight("Firstname LASTNAME, job title"),
+  supervisor:(
+    (
+      "name": highlight("Ms First SUPERVISOR "),
+      "function": highlight("Department manager"),
+    ),
+    (
+      "name": highlight("Mr Second SUPERVISOR "),
+      "function": highlight("Research engineer "),
+    )
+  ),
+  fac_supervisor: (
+    (
+      "name": highlight("Pr. Penultimate SUPERVISOR"),
+      "function": highlight("University Professor , XLIM CNRS"),
+    ),
+    (
+      "name":highlight( "Pr. Last SUPERVISOR"),
+      "function": highlight("Associate Professor, XLIM CNRS"),
+    )
+  ),
   body
   ) = {
 
@@ -89,20 +107,50 @@ block(
   )[*Host organization* #linebreak()
   #organization]
   v(15pt)
-  text(
+  if(supervisor.len() < 2) {
+    text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[*Supervisors* #linebreak()
-  #Supervisors
+  )[*Supervisor*#linebreak()]
+  }else{
+    text(
+    font: "Arial",
+    fill: rgb("#4B575F"),
+    size: 12pt,
+  )[*Supervisors*#linebreak()] 
+  }
+  [
+    #for perso in supervisor {
+      text(
+        font: "Arial",
+        fill: rgb("#4B575F"),
+        size: 12pt,
+      )[#perso.at("name"), #perso.at("function")#linebreak()]
+    }
   ]
   v(15pt)
-  text(
+  if(fac_supervisor.len() < 2) {
+    text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[*Faculty supervisor* #linebreak()
-    #fac_supervisor
+  )[*Faculty Supervisor*#linebreak()]
+  }else{
+    text(
+    font: "Arial",
+    fill: rgb("#4B575F"),
+    size: 12pt,
+  )[*Faculty Supervisors*#linebreak()] 
+  }
+   [
+    #for perso in fac_supervisor {
+      text(
+        font: "Arial",
+        fill: rgb("#4B575F"),
+        size: 12pt,
+      )[#perso.at("name"), #perso.at("function")#linebreak()]
+    }
   ]
   align(right,
   image("../ressources/footer_cover.png", width: 20%)
