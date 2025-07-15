@@ -1,4 +1,4 @@
-#import "src/unilim_fr.typ": *
+#import "../lib_fr.typ": *
 
 #set par(justify: true)
 #set text(
@@ -53,7 +53,7 @@
 
 #lorem(30)
 #figure(
-  image("ressources/example.png", width: 50%),
+  image("../resources/example.png", width: 50%),
   caption: [Une image d'exemple]
 )
 

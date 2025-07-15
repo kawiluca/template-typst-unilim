@@ -1,9 +1,10 @@
-#import "src/unilim_en.typ": *
+#import "../lib_en.typ": *
+// #import "src/unilim_en.typ": *
 
 #set par(justify: true)
 #set text(
   font: "Arial",
-  size: 11pt,
+  size: 14pt,
 )
 
 #show: cover.with(
@@ -55,7 +56,7 @@
 
 #lorem(30)
 #figure(
-  image("ressources/example.png", width: 50%),
+  image("../resources/example.png", width: 50%),
   caption: [example]
 )
 
