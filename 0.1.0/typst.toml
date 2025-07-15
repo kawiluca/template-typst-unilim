@@ -1,5 +1,5 @@
 [package]
-name="unilim"
+name="template-unilim"
 version="0.1.0"
 entrypoint="lib_en.typ"
 authors=["@kawiluca"]
