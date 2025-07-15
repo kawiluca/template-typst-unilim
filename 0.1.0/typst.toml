@@ -2,14 +2,15 @@
 name="unilim"
 version="0.1.0"
 entrypoint="lib_en.typ"
-authors="@kawiluca"
+authors=["@kawiluca"]
 license="MIT"
 description="Master's thesis at University of Limoges"
 repository="https://github.com/kawiluca/template-typst-unilim"
 keywords=["university","limoges","thesis"]
 categories=["report"]
-disciplines = ["computer-sciences"]
+disciplines = ["education"]
 
 [template]
 path="init_material"
 entrypoint="example_en.typ"
+thumbnail = "asset/thumbail.png"
