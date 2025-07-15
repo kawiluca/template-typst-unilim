@@ -201,41 +201,44 @@ z\"/>
 </svg>
 "
 
-#let title(
-  niveau_formation: highlight("Niveau du Diplome"),
-  nom_formation: highlight("Nom de la formation"),
-  complément_formation: highlight("description de la formation"),
-  auteur : highlight("Prénom NOM"),
-  date_soutenance: highlight("Date de soutenance"),
-  titre_manuscrit : highlight("Titre du manuscrit"),
-  lieu :  highlight("Lieu de stage ou d'accueil"),
-  encadrant : (
-    (
-      nom: highlight("Mme Premier ENCADRANT"),
-      fonction: highlight("Responsable du service"),
-    ), 
-    (
-      nom: highlight("M. Second ENCADRANT"),
-      fonction: highlight("Ingenieur de recherche"),
-    ), 
-  ),
-  academique :  (
-    (
-      nom: highlight("Pr. Pénultième ENCADRANT"),
-      fonction: highlight("Professeur des Universités, XLIM, CNRS"),
-    ), 
-    (
-      nom: highlight("Pr. Dernier ENCADRANT"),
-      fonction: highlight("Maître de Conférences, XLIM, CNRS"),
-    ), 
-  ),
+#let data = yaml("init_material/template.yml")
+
+#let faculty = data.at(0).faculty
+#let lang = data.at(1).lang
+
+#let degree = data.at(2).degree
+#let name-degree = data.at(3).name-degree
+#let degree-description = data.at(4).degree-description
+#let author = data.at(5).author
+#let date = data.at(6).date
+#let thesis-title = data.at(7).thesis-title
+#let organization = data.at(8).organization
+#let supervisors = data.at(9).supervisors
+#let fac-supervisors = data.at(10).fac-supervisors
+
+
+#let color-tpl = rgb("#B51621")
+
+#if upper(faculty)=="FST" {
+  color-tpl = rgb("#E85412")
+}
+#if upper(faculty)=="FLSH" {
+  color-tpl = rgb("#A2A93F")
+
+}
+#if upper(faculty)=="FDSE" {
+  color-tpl = rgb("#7E388A")
+
+}
+
+#let cover(
   body
   ) = {
 
 block(
     spacing: 0pt,
     inset: 20pt,
-    fill: rgb("#B51621"),
+    fill: color-tpl,
     [
       #grid(
         columns: ( auto, auto),
@@ -248,10 +251,15 @@ block(
                 weight: "bold",
                 fill: rgb("#FFFFFF"),
                 size: 20pt,
-                [Mémoire de #niveau_formation]
+                [
+                  #if lang=="fr" {
+                    [Mémoire de #degree]
+                  }else{
+                    [#degree thesis]
+                  }
+                ]
               )
             ], 
-      // image("../ressources/logo.png", width: 100pt)
       image(bytes(logo), width: 100pt)
       )        
     ]
@@ -262,103 +270,159 @@ block(
     weight: "bold",
     fill: rgb("#4B575F"),
     size: 16pt
-  )[Université de Limoges - #nom_formation]
+  )[
+    #if lang=="fr" {
+      [Université de Limoges - #name-degree]
+    }else{
+      [University of Limoges - #name-degree]
+    }
+  ]
+    
   v(1%)
   text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt
-  )[Mémoire pour l'obtention du grade de #niveau_formation ]
-    linebreak()
+  )[
+    #if lang=="fr" {
+      [Mémoire pour l'obtention du grade de #degree]
+    }else{
+      [Thesis submitted in partial fulfillment of the requirements for the degree of #degree ]
+    }
+    #linebreak()
+  ]
+    
+    
 
   upper(text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[#complément_formation])
+  )[#degree-description])
   v(3%)
   text(
     font: "Arial",weight: "bold",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[Présenté et soutenu par ]
-  linebreak()
+  )[
+    #if lang=="fr" {
+      [Présenté et soutenu par]
+    }else{
+      [Presented and defensed by]
+    }
+    
+    ]
 
   text(
     font: "Arial",
     
     fill: rgb("#4B575F"),
     size: 14pt,
-  )[#auteur]
+  )[#author]
   v(1pt)
   text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[Le #date_soutenance]
+  )[
+    #if lang=="fr" {
+      [Le #date]
+    }else{
+      [On #date]
+    }
+    
+    ]
+    
   v(8%)
   upper(text(
     font: "Arial",
     weight: "light",
-    fill: rgb("#B51621"),
+    fill: color-tpl,
     size: 16pt,
-  )[#titre_manuscrit])
-  v(15%)
+  )[#thesis-title])
+  v(10%)
   text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[*Etablissement d'accueil* #linebreak()
-  #lieu]
+  )[
+    #if lang=="fr" {
+      [*Etablissement d'accueil* #linebreak()
+      #organization]
+    }else{
+      [*Host organization* #linebreak()
+      #organization]
+    }
+    
+    ]
+    
+    
   v(15pt)
-  if(encadrant.len() < 2) {
+  if(supervisors.len() < 2) {
     text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[*Encadrant*#linebreak()]
+  )[ #if (lang=="fr") {
+    [*Encadrant*#linebreak()]
+  }else{
+    [*Supervisor*#linebreak()]
+  }]
   }else{
     text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[*Encadrants*#linebreak()] 
+  )[ #if (lang=="fr") {
+    [*Encadrants*#linebreak() ]
+  }else{
+    [*Supervisors*#linebreak()]
+  }]
   }
   [
-    #for perso in encadrant {
+    #for perso in supervisors {
       text(
         font: "Arial",
         fill: rgb("#4B575F"),
         size: 12pt,
-      )[#perso.at("nom"), #perso.at("fonction")#linebreak()]
+      )[#perso.at("name"), #perso.at("function")#linebreak()]
     }
   ]
   v(15pt)
-  if(academique.len() < 2) {
+  if(fac-supervisors.len() < 2) {
     text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[*Encadrant Académique*#linebreak()]
+  )[ #if (lang=="fr") {
+    [*Encadrant académique*#linebreak()]
+  }else{
+    [*Faculty Supervisor*#linebreak()]
+  }]
+    
+    
   }else{
     text(
     font: "Arial",
     fill: rgb("#4B575F"),
     size: 12pt,
-  )[*Encadrants Académique*#linebreak()] 
+  )[ #if (lang=="fr") {
+    [*Encadrants académique*#linebreak()]
+  }else{
+    [*Faculty Supervisosr*#linebreak()]
+  }]
   }
-  [
-    #for pers in academique {
+   [
+    #for perso in fac-supervisors {
       text(
         font: "Arial",
         fill: rgb("#4B575F"),
         size: 12pt,
-      )[#pers.at("nom"), #pers.at("fonction")#linebreak()]
+      )[#perso.at("name"), #perso.at("function")#linebreak()]
     }
   ]
   align(right,
   image(bytes(footer_cover), width: 20%)
-  // image("../resources/footer_cover.png", width: 20%)
   )
   
   set page(
@@ -369,7 +433,12 @@ block(
           font: "Arial",
           fill: rgb("#7F7F7F"),
           size: 8pt,
-        )[#auteur | Mémoire de #niveau_formation | Université de Limoges #h(1fr)#counter(page).display() ]
+        )[ #if (lang=="fr") {
+          [#author | Mémoire de #degree | Université de Limoges #h(1fr)#counter(page).display() ]
+        }else{
+          [#author | #degree thesis | University of Limoges #h(1fr)#counter(page).display() ]
+        }]
+        
       ]
     ]
   )
@@ -379,52 +448,72 @@ block(
   body
 }
 
-#let epigraphe(
-    citation: highlight("Texte de l'épigraphe"),
-    auteur: highlight("Auteur de l'épigraphe"),
+#let epigraphy(
+    citation: highlight("The citation text"),
+    author: highlight("The author of the citation"),
   )={
     align(
       right
     )[
     #text[#citation]
     #linebreak()
-   *#text[#auteur]*
+   *#text[#author]*
 
     ]
 
   }
 
-#let remerciements()={
+#let acknowledgements()={
   pagebreak()
-  text("Remerciements", size: 14pt, weight: "bold")
+  text(
+    [ #if lang=="fr" {
+          "Remerciements"
+        }else{
+          "Acknowledgements"
+        }]
+    , size: 14pt, weight: "bold")
   line(length: 100%)
 }
 
-#let tableMatieres()={
+#let tableContents()={
   pagebreak()
   outline(
     title: [
-      #text("Table des matières", size: 14pt, weight: "bold"),
+      #text(
+        [ #if lang=="fr" {
+          [Table des Matières]
+        }else{
+          [Table of Contents]
+        }]
+        , size: 14pt, weight: "bold"),
       #line(length: 100%)
     ],
   )
 }
-#let tableIllustrations()={
+#let tableFigures()={
   pagebreak()
   outline(
     title: [
-      #text("Table des figures", size: 14pt, weight: "bold"),
+      #text([ #if lang=="fr" {
+          [Table des Figures]
+        }else{
+          [List of Figures]
+        }], size: 14pt, weight: "bold"),
       #line(length: 100%)
     ],
     target: figure.where(kind: image)
   )
 }
 
-#let tableTableau()={
+#let tableTable()={
   pagebreak()
   outline(
     title: [
-      #text("Table des tableaux", size: 14pt, weight: "bold"),
+      #text([ #if lang=="fr" {
+          [Table des Tableaux]
+        }else{
+          [List of Tables]
+        }], size: 14pt, weight: "bold"),
       #line(length: 100%)
     ],
     target: figure.where(kind: table)
@@ -432,15 +521,15 @@ block(
   
 }
 
-#let titre(my_titre)={
+#let title(my_title)={
   pagebreak()
-  [= #my_titre]
+  [= #my_title]
   line(length: 100%)
 }
 
 #let pseudocode(
   content,
-  caption: highlight("Légende manquante"),
+  caption: highlight("Missing caption"),
   size: 80%
   ) = {
 set par(justify: false)
@@ -454,7 +543,6 @@ figure(
     clip: false,
   [#align(left)[#content]]),
   caption: [#caption],
-  supplement: "Code",
+  supplement: "Codice",
   kind: "code",
 )}
-

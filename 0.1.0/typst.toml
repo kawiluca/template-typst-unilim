@@ -1,7 +1,7 @@
 [package]
 name="unilim-thesis"
 version="0.1.0"
-entrypoint="lib_en.typ"
+entrypoint="lib.typ"
 authors=["@kawiluca"]
 license="MIT"
 description="Master's thesis at University of Limoges"
@@ -12,5 +12,5 @@ disciplines = ["education"]
 
 [template]
 path="init_material"
-entrypoint="example_en.typ"
+entrypoint="main.typ"
 thumbnail = "asset/thumbail.png"

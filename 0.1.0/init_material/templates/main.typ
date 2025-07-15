@@ -2,10 +2,10 @@
 // #import "@preview/unilim-thesis:0.1.0":*
 
 // install in local version
-#import "@local/unilim-thesis:0.1.0":*
+// #import "@local/unilim-thesis:0.1.0":*
 
 //for local development
-// #import "../lib_en.typ": *
+#import "../../lib.typ": *
 
 #set par(justify: true)
 #set text(
@@ -13,35 +13,11 @@
   size: 14pt,
 )
 
-#show: cover.with(
-  // degree: "Master",
-  // name_degree: "Master Cryptis",
-  // degree_description: "Information Security and Cryptology - Computer Science major",
-  // author: "",
-  // date: "",
-  // thesis_title: "",
-  // organization: "",
-  // supervisor:(
-  //   (
-  //     "name": "Ms. First SUPERVISOR",
-  //     "function": "Department manager",
-  //   ), // <==== DON'T FORGET THIS COMMA, IT'S IMPORTANT AND REQUIRED
-  //  (
-  //     "name": "Ms. Second SUPERVISOR",
-  //     "function": "Department manager",
-  //   ),
-  // ),
-  // fac_supervisor: (
-  //   (
-  //     "name": "Pr. Last SUPERVISOR",
-  //     "function": "Associate Professor, XLIM CNRS",
-  //   ), // <==== DON'T FORGET THIS COMMA, IT'S IMPORTANT AND REQUIRED
-  //   ),
-)
+#show: cover.with()
 
 #epigraphy(
   // citation: "La sécurité est un état d'esprit, pas un produit.",
-  // auteur: "Edward Snowden",
+  // author: "Edward Snowden",
 )
 
 #acknowledgements()
@@ -127,9 +103,9 @@ Decryption: $hat(bold(m)) = bold(c) - hat(bold(e)) * bold(G)$
 
 #pagebreak()
 #bibliography("example.bib",
-  title: [
-    Bibliography 
-    ],
+  title: [Références Bibliographiques]
+  // title: [Bibliography]
   )
 
-#title("Appendix")
+// #title("Appendix")
+#title("Annexes")
