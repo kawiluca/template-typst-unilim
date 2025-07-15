@@ -48,7 +48,7 @@ LINUX - Installing the template
 In your project directory, initialize the project
 ```sh
 $ cd <your project directory>
-$ typst init @preview/unilim-thesis:0.1.0
+$ typst init @local/unilim-thesis:0.1.0
 $ typst compile unilim-thesis/templates/example_en.typ
 $ typst compile unilim-thesis/templates/exemple_fr.typ
 ```
@@ -62,7 +62,7 @@ Windows - Installing the template
 In your project directory, initialize the project
 ```sh
 $ cd <your project directory>
-$ typst init @preview/unilim-thesis:0.1.0
+$ typst init @local/unilim-thesis:0.1.0
 $ typst compile unilim-thesis/templates/example_en.typ
 $ typst compile unilim-thesis/templates/exemple_fr.typ
 ```
