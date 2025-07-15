@@ -1,4 +1,11 @@
-#import "../lib_fr.typ": *
+// install from typst univers
+// #import "@preview/unilim-thesis:0.1.0":*
+
+// install in local version
+#import "@local/unilim-thesis:0.1.0":*
+
+//for local development
+// #import "../lib_en.typ": *
 
 #set par(justify: true)
 #set text(
