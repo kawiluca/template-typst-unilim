@@ -1,20 +1,11 @@
 # Typst Template for Unilim thesis
 
-## Disclaimer & Usage
-
-This repository contains unofficial adaptations of **official templates from the University of Limoges**. However, the Typst templates provided here are **not official**, even if they closely resemble the originals. You can find the official templates (LaTeX and Word only) at the following link: [Templates of the University of Limoges](https://support.unilim.fr/publications-et-redaction/depot-et-modeles-de-documents/telecharger-un-modele-de-document/)
-
 ## Key Features
 - **Two versions**: french and english
 - **Cover (+ footer)** of the University of Limoges
 - **Standard document structure** (cover, epigraphy, Acknowledgements, tables, body, conclusion, bibliography, appendix)
-- **Title** in University of Limoges format
-- **Example to include .typ file** (to divide document in several files)
-- **Example to insert image**
-- **Example to insert table**
-- **Example to insert pseudocode**
-- **Example to insert math formula**
-- **Example to insert source in bibliography**
+- **Titles** in University of Limoges format
+- **Examples** (image, table, pseudocode, math formula, bibliography)
 
 ## Demo
 
@@ -71,6 +62,10 @@ $ typst compile unilim-thesis/templates/exemple_fr.typ
 
 ## Tips for generating a bibliography
 Use the free tool Zotero during your literature review to collect and organize your sources. Once your library is ready, you can export it in BibLaTeX format (.bib), which can be easily included in your Typst file.
+
+## Disclaimer & Usage
+
+[Official MS Word & Latex Templates](https://support.unilim.fr/publications-et-redaction/depot-et-modeles-de-documents/telecharger-un-modele-de-document/) from the Limoges' University
 
 ## Contributing
 
