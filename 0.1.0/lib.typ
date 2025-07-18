@@ -201,44 +201,27 @@ z\"/>
 </svg>
 "
 
-#let data = yaml("init_material/template.yml")
-
-#let faculty = data.at(0).faculty
-#let lang = data.at(1).lang
-
-#let degree = data.at(2).degree
-#let name-degree = data.at(3).name-degree
-#let degree-description = data.at(4).degree-description
-#let author = data.at(5).author
-#let date = data.at(6).date
-#let thesis-title = data.at(7).thesis-title
-#let organization = data.at(8).organization
-#let supervisors = data.at(9).supervisors
-#let fac-supervisors = data.at(10).fac-supervisors
-
-
-#let color-tpl = rgb("#B51621")
-
-#if upper(faculty)=="FST" {
-  color-tpl = rgb("#E85412")
-}
-#if upper(faculty)=="FLSH" {
-  color-tpl = rgb("#A2A93F")
-
-}
-#if upper(faculty)=="FDSE" {
-  color-tpl = rgb("#7E388A")
-
-}
-
 #let cover(
-  body
-  ) = {
+  color,
+  lang,
+  data
+) = {
+
+let degree = data.at(5).degree
+let name-degree = data.at(6).name-degree
+let degree-description = data.at(7).degree-description
+let student = data.at(8).student
+let author = data.at(9).author
+let date = data.at(10).date
+let thesis-title = data.at(11).thesis-title
+let organization = data.at(12).organization
+let supervisors = data.at(13).supervisors
+let fac-supervisors = data.at(14).fac-supervisors
 
 block(
     spacing: 0pt,
     inset: 20pt,
-    fill: color-tpl,
+    fill: color,
     [
       #grid(
         columns: ( auto, auto),
@@ -306,7 +289,15 @@ block(
     size: 12pt,
   )[
     #if lang=="fr" {
-      [Présenté et soutenu par]
+      if student=="W"{
+        [Présentée et soutenue par]
+      }
+      if student=="M"{
+        [Présenté et soutenu par]
+      }
+      if student!="M" and student!="W"{
+        [Présenté.e et soutenu.e par]
+      }
     }else{
       [Presented and defensed by]
     }
@@ -337,7 +328,7 @@ block(
   upper(text(
     font: "Arial",
     weight: "light",
-    fill: color-tpl,
+    fill: color,
     size: 16pt,
   )[#thesis-title])
   v(10%)
@@ -444,9 +435,9 @@ block(
   )
   pagebreak()
 
-
-  body
 }
+}
+
 
 #let epigraphy(
     citation: highlight("The citation text"),
@@ -461,59 +452,33 @@ block(
 
     ]
 
-  }
-
-#let acknowledgements()={
-  pagebreak()
-  text(
-    [ #if lang=="fr" {
-          "Remerciements"
-        }else{
-          "Acknowledgements"
-        }]
-    , size: 14pt, weight: "bold")
-  line(length: 100%)
 }
 
-#let tableContents()={
+#let tableContents(titre)={
   pagebreak()
   outline(
     title: [
-      #text(
-        [ #if lang=="fr" {
-          [Table des Matières]
-        }else{
-          [Table of Contents]
-        }]
-        , size: 14pt, weight: "bold"),
+      #text([#titre], size: 14pt, weight: "bold"),
       #line(length: 100%)
     ],
   )
 }
-#let tableFigures()={
+#let tableFigures(titre)={
   pagebreak()
   outline(
     title: [
-      #text([ #if lang=="fr" {
-          [Table des Figures]
-        }else{
-          [List of Figures]
-        }], size: 14pt, weight: "bold"),
+      #text([#titre], size: 14pt, weight: "bold"),
       #line(length: 100%)
     ],
     target: figure.where(kind: image)
   )
 }
 
-#let tableTable()={
+#let tableTable(titre)={
   pagebreak()
   outline(
     title: [
-      #text([ #if lang=="fr" {
-          [Table des Tableaux]
-        }else{
-          [List of Tables]
-        }], size: 14pt, weight: "bold"),
+      #text([#titre], size: 14pt, weight: "bold"),
       #line(length: 100%)
     ],
     target: figure.where(kind: table)
@@ -522,7 +487,7 @@ block(
 }
 
 #let title(my_title)={
-  pagebreak()
+  pagebreak(weak: true)
   [= #my_title]
   line(length: 100%)
 }
@@ -546,3 +511,123 @@ figure(
   supplement: "Codice",
   kind: "code",
 )}
+
+#let def(
+  term,
+  detail,
+  define,  
+)={
+  [
+    *#term* (#detail) : #define
+  ]
+}
+
+#let unilim-thesis-template(
+  data,
+  epigra,
+  acknow,
+  intro,
+  my_content,
+  conclusion,
+  src_biblio,
+  glossary,
+  appendix,
+  body
+)={
+let faculty = data.at(0).faculty
+let lang = data.at(1).lang
+
+let color-tpl = rgb("#B51621")
+
+if upper(faculty)=="FST" {
+  color-tpl = rgb("#E85412")
+}
+if upper(faculty)=="FLSH" {
+  color-tpl = rgb("#A2A93F")
+
+}
+if upper(faculty)=="FDSE" {
+  color-tpl = rgb("#7E388A")
+
+}
+cover(color-tpl, lang, data)
+
+pagebreak()
+
+if data.at(4).epigraphy!="N" {
+  epigraphy(
+    citation: epigra.citation,
+    author: epigra.author,
+  ) 
+}
+
+if lang=="fr" {
+  title("Remerciements")
+  acknow
+
+  tableContents("Table des Matières")
+  tableFigures("Table des Figures")
+  tableTable("Table des Tableaux")
+
+  title("Introduction")
+  intro
+
+  pagebreak(weak: true)
+  my_content
+
+  title("Conclusion")
+  conclusion
+
+  pagebreak(weak: true)
+
+  if data.at(2).glossary!="N" {
+    title("Glossaire")
+    glossary
+    pagebreak(weak: true)
+  }
+
+  title("Références Bibliographiques")
+  bibliography(src_biblio,
+  title: none
+  )
+  if data.at(3).appendix!="N" {
+    title("Annexes")
+    appendix
+  }
+} else {
+  title("Acknowlegments")
+  acknow
+
+  tableContents("Table of Contents")
+  tableFigures("List of Figures")
+  tableTable("List of Tables")
+
+  title("Introduction")
+  intro
+
+  pagebreak(weak: true)
+  my_content
+
+  title("Conclusion")
+  conclusion
+
+  pagebreak(weak: true)
+
+  if data.at(2).glossary!="N" {
+    title("Glossary")
+    glossary
+    pagebreak(weak: true)
+  }
+
+  title("Bibliography")
+  bibliography(src_biblio,
+  title: none
+  )
+  if data.at(3).appendix!="N" {
+    title("Appendix")
+    appendix
+  }
+  }
+
+body
+}

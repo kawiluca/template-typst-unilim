@@ -1,36 +1,4 @@
-// install from typst univers
-// #import "@preview/unilim-thesis:0.1.0":*
-
-// install in local version
-// #import "@local/unilim-thesis:0.1.0":*
-
-//for local development
-#import "../../lib.typ": *
-
-#set par(justify: true)
-#set text(
-  font: "Arial",
-  size: 14pt,
-)
-
-#show: cover.with()
-
-#epigraphy(
-  // citation: "La sécurité est un état d'esprit, pas un produit.",
-  // author: "Edward Snowden",
-)
-
-#acknowledgements()
-#include "my-include-section.typ"
-
-
-#tableContents()
-
-#tableFigures()
-#tableTable()
-
-#title("Introduction")
-
+#import "@local/unilim-thesis:0.1.0":*
 
 
 = chapter 1:
@@ -97,15 +65,3 @@ Decryption: $hat(bold(m)) = bold(c) - hat(bold(e)) * bold(G)$
 #lorem(30)#footnote()[This a foonote]
 == subtitle
 == subtitle
-
-#title("Conclusion")
-
-
-#pagebreak()
-#bibliography("example.bib",
-  title: [Références Bibliographiques]
-  // title: [Bibliography]
-  )
-
-// #title("Appendix")
-#title("Annexes")
