@@ -22,9 +22,8 @@ See [english version](./preview/preview_en.pdf)
 
 In your project directory, initialize the project
 ```sh
-$ typst init @preview/unilim-thesis:0.1.0
-$ typst compile unilim-thesis/templates/example_en.typ
-$ typst compile unilim-thesis/templates/exemple_fr.typ
+$ typst init @preview/unilim-thesis:0.1.0 my_manuscript
+$ typst compile my_manuscript/main.typ
 ```
 
 ### From local version 
@@ -39,9 +38,8 @@ LINUX - Installing the template
 In your project directory, initialize the project
 ```sh
 $ cd <your project directory>
-$ typst init @local/unilim-thesis:0.1.0
-$ typst compile unilim-thesis/templates/example_en.typ
-$ typst compile unilim-thesis/templates/exemple_fr.typ
+$ typst init @local/unilim-thesis:0.1.0 my_manuscript
+$ typst compile my_manuscript/main.typ
 ```
 ---
 Windows - Installing the template
@@ -53,17 +51,18 @@ Windows - Installing the template
 In your project directory, initialize the project
 ```sh
 $ cd <your project directory>
-$ typst init @local/unilim-thesis:0.1.0
-$ typst compile unilim-thesis/templates/example_en.typ
-$ typst compile unilim-thesis/templates/exemple_fr.typ
+$ typst init @local/unilim-thesis:0.1.0 my_manuscript
+$ typst compile my_manuscript/main.typ
 ```
 
+## Usage
 
+To modify the template, you need to edit the `template.yml` file. The epigraphy, glossary, and appendix can be disabled (in the `template.yml` file). The epigraphy can be modified in the `main.typ` file.
 
 ## Tips for generating a bibliography
 Use the free tool Zotero during your literature review to collect and organize your sources. Once your library is ready, you can export it in BibLaTeX format (.bib), which can be easily included in your Typst file.
 
-## Disclaimer & Usage
+## Resources
 
 [Official MS Word & Latex Templates](https://support.unilim.fr/publications-et-redaction/depot-et-modeles-de-documents/telecharger-un-modele-de-document/) from the Limoges' University
 

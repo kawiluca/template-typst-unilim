@@ -7,7 +7,7 @@ license="MIT"
 description="Master's thesis at University of Limoges"
 repository="https://github.com/kawiluca/template-typst-unilim"
 keywords=["university","limoges","thesis"]
-categories=["report"]
+categories=["report", "thesis"]
 disciplines = ["education"]
 
 [template]
